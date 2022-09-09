@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  api_app:
+    build: .
+    container_name: api_app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "8000:8000"
+    env_file: drf_avançado/.env
+    restart: always
+
+    depends_on:
+      - postgresdrf
+
+  postgresdrf:
+    image: postgres:14.3-alpine
+    hostname: prostgresdrf
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: 'drfuser'
+      POSTGRES_PASSWORD: 'drfpassword'
+      POSTGRES_DB: 'postgresdb'
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+
+volumes:
+  postgresql_data:
