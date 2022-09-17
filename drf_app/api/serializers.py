@@ -5,20 +5,31 @@ from rest_framework import serializers
 from drf_app.models import Album, Track, Robot, RobotType, RobotCategory
 
 
-class AlbumSerializer(serializers.ModelSerializer):
-    tracks = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
+class RobotSerializer(serializers.ModelSerializer):
+    type = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='name'
+    )
+    category = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='name'
+    )
 
     class Meta:
-        model = Album
+        model = Robot
         fields = '__all__'
 
 
-class TrackSerializer(serializers.ModelSerializer):
-    Album = AlbumSerializer(many=False)
+class RobotTypeSerializer(serializers.ModelSerializer):
+    model = RobotType
+    fields = '__all__'
 
-    class Meta:
-        model = Track
-        fields = '__all__'
+
+class RobotCategorySerializer(serializers.ModelSerializer):
+    model = RobotCategory
+    fields = '__all__'
 
 
 class Comment:
