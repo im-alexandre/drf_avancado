@@ -2,7 +2,7 @@ from datetime import datetime
 
 from rest_framework import serializers
 
-from drf_app.models import Album, Track, Robot, RobotType, RobotCategory
+from drf_app.models import Robot, RobotType, RobotCategory
 
 
 class RobotSerializer(serializers.ModelSerializer):
