@@ -11,6 +11,8 @@ route = routers.DefaultRouter()
 route.register(r'api/robot', RobotViewSet, basename='Robot')
 route.register(r'api/type', RobotTypeViewSet, basename='Type')
 route.register(r'api/category', RobotCategoryViewSet, basename='Category')
+# route.register(r'api/comment', CommentViewSet, basename='Comment')
+
 
 urlpatterns = [
     path('', include(route.urls)),

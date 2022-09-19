@@ -1,7 +1,7 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, views
 from ..models import Robot, RobotCategory, RobotType
 
-from .serializers import RobotSerializer, RobotTypeSerializer, RobotCategorySerializer
+from .serializers import RobotSerializer, RobotTypeSerializer, RobotCategorySerializer, CommentSerializer
 
 
 class RobotViewSet(viewsets.ModelViewSet):

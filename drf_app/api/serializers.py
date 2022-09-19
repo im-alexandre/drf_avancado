@@ -22,6 +22,11 @@ class RobotSerializer(serializers.ModelSerializer):
         model = Robot
         fields = '__all__'
 
+    def validate_name(self, value):
+        if 'Robot' not in value[:5]:
+            raise serializers.ValidationError('Robot name must start with Robot')
+        return value
+
 
 class Comment:
     def __init__(self, email, content, created=None):
@@ -37,3 +42,6 @@ class CommentSerializer(serializers.Serializer):
     email = serializers.EmailField()
     content = serializers.CharField(max_length=100)
     created = serializers.DateTimeField()
+
+    def validate_comment(self, value):
+        pass

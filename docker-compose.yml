@@ -24,7 +24,7 @@ services:
       POSTGRES_PASSWORD: 'drfpassword'
       POSTGRES_DB: 'postgresdb'
     volumes:
-      - postgresql_data:/var/lib/postgresql/data
+      - postgresql_data3:/var/lib/postgresql/data
 
 volumes:
-  postgresql_data:
+  postgresql_data3:
