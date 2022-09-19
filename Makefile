@@ -3,14 +3,13 @@ build_container:
 
 build:
 	docker exec api_app python3 manage.py migrate --noinput
-	docker exec api_app python3 manage.py collectstatic --noinput --clear
 
 collectstatic:
 	docker exec -it api_app python3 manage.py collectstatic
 
-run:
+install:
 	docker-compose down
-	docker-compose up
+	docker-compose up --build
 
 up:
 	docker-compose down
