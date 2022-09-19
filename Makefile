@@ -1,23 +1,29 @@
-all:
-	docker-compose up --build
-build:
-	docker exec api_app pip3 install --upgrade pip
-	docker exec api_app pip3 install -r requirements.txt
-	docker exec api_app python3 manage.py makemigrations
-	docker exec api_app python3 manage.py migrate
+build_container:
+	docker-compose build
 
-test:
-	docker exec api_app python3 manage.py test
+build:
+	docker exec api_app python3 manage.py migrate --noinput
+	docker exec api_app python3 manage.py collectstatic --noinput --clear
+
+collectstatic:
+	docker exec -it api_app python3 manage.py collectstatic
 
 run:
 	docker-compose down
 	docker-compose up
 
-scrap:
-	docker exec api_app python3 manage.py BSoup
+up:
+	docker-compose down
+	docker-compose up -d
+
+logs:
+	docker-compose logs -f --tail 100
 
 down:
 	docker-compose down
 
 inspect:
 	docker exec -it api_app /bin/bash
+
+makemigrations:
+	docker exec -it api_app python3 manage.py makemigrations api_app
