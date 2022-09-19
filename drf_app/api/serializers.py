@@ -5,32 +5,21 @@ from rest_framework import serializers
 from drf_app.models import Robot, RobotType, RobotCategory
 
 
-class RobotSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field='name'
-    )
-    category = serializers.SlugRelatedField(
-        many=False,
-        read_only=True,
-        slug_field='name'
-    )
-
-    class Meta:
-        model = Robot
-        fields = '__all__'
-
-
 class RobotTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = RobotType
-        fields = '__all__'
+        fields = ['name']
 
 
 class RobotCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = RobotCategory
+        fields = ['name']
+
+
+class RobotSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Robot
         fields = '__all__'
 
 

@@ -16,8 +16,8 @@ class Robot(models.Model):
     type = models.ForeignKey(RobotType, on_delete=models.CASCADE)
     category = models.ForeignKey(RobotCategory, on_delete=models.CASCADE)
     is_paid = models.BooleanField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    update_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True)
+    update_at = models.DateField(auto_now=True)
 
 
 class Album(models.Model):
