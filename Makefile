@@ -20,4 +20,4 @@ down:
 	docker-compose down
 
 inspect:
-	docker exec -it application /bin/bash
+	docker exec -it api_app /bin/bash

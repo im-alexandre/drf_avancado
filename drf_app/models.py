@@ -13,11 +13,11 @@ class RobotCategory(models.Model):
 
 class Robot(models.Model):
     name = models.CharField(max_length=100)
-    type_id = models.ForeignKey(RobotType, on_delete=models.CASCADE)
-    category_id = models.ForeignKey(RobotCategory, on_delete=models.CASCADE)
+    type = models.ForeignKey(RobotType, on_delete=models.CASCADE)
+    category = models.ForeignKey(RobotCategory, on_delete=models.CASCADE)
     is_paid = models.BooleanField()
-    created_at = models.DateField()
-    update_at = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
 
 
 class Album(models.Model):

@@ -23,13 +23,15 @@ class RobotSerializer(serializers.ModelSerializer):
 
 
 class RobotTypeSerializer(serializers.ModelSerializer):
-    model = RobotType
-    fields = '__all__'
+    class Meta:
+        model = RobotType
+        fields = '__all__'
 
 
 class RobotCategorySerializer(serializers.ModelSerializer):
-    model = RobotCategory
-    fields = '__all__'
+    class Meta:
+        model = RobotCategory
+        fields = '__all__'
 
 
 class Comment:

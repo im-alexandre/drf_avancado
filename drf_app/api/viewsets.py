@@ -11,13 +11,13 @@ class RobotViewSet(viewsets.ModelViewSet):
 
 
 class RobotTypeViewSet(viewsets.ModelViewSet):
-    permissions = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAdminUser]
     serializer_class = RobotTypeSerializer
     queryset = RobotType.objects.all()
 
 
 class RobotCategoryViewSet(viewsets.ModelViewSet):
-    permissions = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAdminUser]
     serializer_class = RobotCategorySerializer
     queryset = RobotCategory.objects.all()
 
