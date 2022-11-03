@@ -24,7 +24,16 @@ services:
       POSTGRES_PASSWORD: 'drfpassword'
       POSTGRES_DB: 'postgresdb'
     volumes:
-      - postgresql_data3:/var/lib/postgresql/data
+      - postgresql_data:/var/lib/postgresql/data
+
+  adminer:
+    container_name: adminer
+    image: adminer
+    depends_on:
+      - postgresdrf
+    ports:
+      - "8080:8080"
+
 
 volumes:
-  postgresql_data3:
+  postgresql_data:

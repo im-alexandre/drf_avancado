@@ -1,7 +1,25 @@
-from rest_framework import viewsets, permissions, views
+from rest_framework import viewsets, permissions, generics, status
 from ..models import Robot, RobotCategory, RobotType
+from rest_framework.response import Response
 
-from .serializers import RobotSerializer, RobotTypeSerializer, RobotCategorySerializer, CommentSerializer
+from .serializers import RobotSerializer, RobotTypeSerializer, RobotCategorySerializer, RegisterSerializer
+
+
+class Register(generics.GenericAPIView):
+    serializer_class = RegisterSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                "RequestId": str(id),
+                "Message": "User created successfully",
+
+                "User": serializer.data}, status=status.HTTP_201_CREATED
+            )
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class RobotViewSet(viewsets.ModelViewSet):
